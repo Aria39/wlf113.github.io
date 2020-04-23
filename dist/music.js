@@ -1,31 +1,25 @@
-<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>const ap = new APlayer({
+const ap = new APlayer({
     container: document.getElementById('aplayer'),
     fixed: true,
-    autoplay: false,
+    autoplay: true,
     audio: [
       {
-        name: "你一定要幸福",
-        artist: '简弘亦',
-        url: 'http://www.ytmp3.cn/down/51689.mp3',
-        cover: 'http://img.ytmp3.cn/image/52.jpg',
+        name: 'Gypsophila',
+        artist: 'MoreanP',
+        url: 'http://music.163.com/song/media/outer/url?id=517346741.mp3',
+        cover: '/images/music/Gypsophila.jpg',
       },
-      {
-        name: '一百万个可能(Live)',
-        artist: '摩登兄弟',
-        url: 'http://www.ytmp3.cn/down/52772.mp3',
-        cover: 'http://img.ytmp3.cn/image/53.jpg',
+    {
+        name: '星茶会',
+        artist: '灰澈',
+        url: 'http://music.163.com/song/media/outer/url?id=492390949.mp3',
+        cover: '/images/music/星茶会.jpg',
       },
-      {
-        name: 'The Rose',
-        artist: 'Westlife',
-        url: 'http://www.ytmp3.cn/down/56694.mp3',
-        cover: 'http://img.ytmp3.cn/image/51.jpg',
-      },
-      {
-        name: 'In The Eyes',
-        artist: '江映东',
-        url: 'http://www.ytmp3.cn/down/53053.mp3',
-        cover: 'http://img.ytmp3.cn/image/10.jpg',
+    {
+        name: 'Afterglow',
+        artist: 'Saiakoup',
+        url: 'http://music.163.com/song/media/outer/url?id=530397372.mp3',
+        cover: '/images/music/Afterglow.jpg',
       }
     ]
 });
