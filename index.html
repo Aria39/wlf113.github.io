@@ -75,6 +75,12 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
   <div class="container use-motion">
     <div class="headband"></div>
 
@@ -248,7 +254,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-23 10:50:24 / 修改时间：14:11:12" itemprop="dateCreated datePublished" datetime="2020-04-23T10:50:24+08:00">2020-04-23</time>
+              <time title="创建时间：2020-04-23 10:50:24 / 修改时间：16:53:20" itemprop="dateCreated datePublished" datetime="2020-04-23T10:50:24+08:00">2020-04-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,76 +278,14 @@
 
       
           <h1 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="2-字体"><a href="#2-字体" class="headerlink" title="2.字体"></a>2.字体</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 加粗</span><br><span class="line">**加粗的文字**</span><br><span class="line">&#x2F;&#x2F; 斜体</span><br><span class="line">*斜体的文字*</span><br><span class="line">&#x2F;&#x2F; 斜体加粗</span><br><span class="line">***斜体加粗的文字***</span><br><span class="line">&#x2F;&#x2F; 删除线</span><br><span class="line">~~删除的文字~~</span><br></pre></td></tr></table></figure>
-<p><strong>加粗的文字</strong><br><em>斜体的文字</em><br><strong><em>斜体加粗的文字</em></strong><br><del>删除的文字</del></p>
-<hr>
-<h1 id="3-分割线"><a href="#3-分割线" class="headerlink" title="3.分割线"></a>3.分割线</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;三个或三个以上的 - 或 * 都可以</span><br><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">****</span><br></pre></td></tr></table></figure>
-<hr>
-<hr>
-<hr>
-<hr>
-<p>效果如上，都一样</p>
-<hr>
-<h1 id="4-代码块"><a href="#4-代码块" class="headerlink" title="4.代码块"></a>4.代码块</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(&#96;&#96;&#96;)</span><br><span class="line">int main()&#123;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br><span class="line">(&#96;&#96;&#96;)</span><br></pre></td></tr></table></figure>
-<p>使用时要去掉括号</p>
-<hr>
-<h1 id="5-列表"><a href="#5-列表" class="headerlink" title="5.列表"></a>5.列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">- 列表2</span><br><span class="line">	1. 子列表1</span><br><span class="line">	2. 子列表2</span><br><span class="line">- 列表3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>列表1</li>
-<li>列表2<ol>
-<li>子列表1</li>
-<li>子列表2</li>
-</ol>
-</li>
-<li>列表3</li>
-</ul>
-<hr>
-<h1 id="6-表格"><a href="#6-表格" class="headerlink" title="6.表格"></a>6.表格</h1><table>
-<thead>
-<tr>
-<th>姓名</th>
-<th align="center">专业</th>
-<th align="center">分数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>张三</td>
-<td align="center">电子</td>
-<td align="center">86</td>
-</tr>
-<tr>
-<td>李华</td>
-<td align="center">通讯</td>
-<td align="center">62</td>
-</tr>
-<tr>
-<td>Jhon Smith</td>
-<td align="center">计算机</td>
-<td align="center">71</td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="7-插入本地图片"><a href="#7-插入本地图片" class="headerlink" title="7.插入本地图片"></a>7.插入本地图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;图片的路径</span><br><span class="line">![糖糖](&#x2F;images&#x2F;dog.jpg)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/dog.jpg" alt="糖糖"> </p>
-<hr>
-<h1 id="8-插入点击链接"><a href="#8-插入点击链接" class="headerlink" title="8.插入点击链接"></a>8.插入点击链接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[bilibili](https:&#x2F;&#x2F;www.bilibili.com&#x2F;)</span><br><span class="line">[github](https:&#x2F;&#x2F;github.com&#x2F;wlf113)</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.bilibili.com/" target="_blank" rel="noopener">bilibili</a><br><a href="https://github.com/wlf113" target="_blank" rel="noopener">github</a></p>
-<hr>
-<h1 id="9-引用"><a href="#9-引用" class="headerlink" title="9.引用"></a>9.引用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;作者:wlf</span><br><span class="line">&gt;&gt;作者:wlf</span><br><span class="line">&gt;&gt;&gt;作者:wlf</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>作者:wlf</p>
-<blockquote>
-<p>作者:wlf</p>
-<blockquote>
-<p>作者:wlf</p>
-</blockquote>
-</blockquote>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -383,10 +327,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-22 22:18:14 / 修改时间：22:39:00" itemprop="dateCreated datePublished" datetime="2020-04-22T22:18:14+08:00">2020-04-22</time>
+              <time title="创建时间：2020-04-22 22:18:14" itemprop="dateCreated datePublished" datetime="2020-04-22T22:18:14+08:00">2020-04-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-23 16:55:30" itemprop="dateModified" datetime="2020-04-23T16:55:30+08:00">2020-04-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -408,12 +358,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="模拟一个1千平方米的，场景中分布了30个adhoc-节点，其余节点向0号节点不断发送数据"><a href="#模拟一个1千平方米的，场景中分布了30个adhoc-节点，其余节点向0号节点不断发送数据" class="headerlink" title="模拟一个1千平方米的，场景中分布了30个adhoc 节点，其余节点向0号节点不断发送数据"></a>模拟一个1千平方米的，场景中分布了30个adhoc 节点，其余节点向0号节点不断发送数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;ns3&#x2F;core-module.h&quot;</span><br><span class="line">#include &quot;ns3&#x2F;network-module.h&quot;</span><br><span class="line">#include &quot;ns3&#x2F;applications-module.h&quot;</span><br><span class="line">#include &quot;ns3&#x2F;wifi-module.h&quot;</span><br><span class="line">#include &quot;ns3&#x2F;mobility-module.h&quot;</span><br><span class="line">#include &quot;ns3&#x2F;internet-module.h&quot;</span><br><span class="line"> </span><br><span class="line">using namespace ns3;</span><br><span class="line"> </span><br><span class="line">NS_LOG_COMPONENT_DEFINE (&quot;AdHocExample&quot;);</span><br><span class="line"> </span><br><span class="line">int main(int argc,char *argv[]）</span><br><span class="line">&#123;   </span><br><span class="line"></span><br><span class="line">    Time::SetResolution (Time::NS);</span><br><span class="line"> </span><br><span class="line">    LogComponentEnable (&quot;AdHocExample&quot;, LOG_LEVEL_INFO);</span><br><span class="line">     &#x2F;&#x2F; LogComponentEnable (&quot;TcpL4Protocol&quot;, LOG_LEVEL_INFO);</span><br><span class="line">    LogComponentEnable (&quot;PacketSink&quot;, LOG_LEVEL_ALL);</span><br><span class="line"> </span><br><span class="line">    uint32_t nAdHoc&#x3D;30;</span><br><span class="line"> </span><br><span class="line">    CommandLine cmd;</span><br><span class="line"> </span><br><span class="line">    cmd.AddValue (&quot;nAdHoc&quot;, &quot;Number of wifi ad devices&quot;, nAdHoc);</span><br><span class="line"> </span><br><span class="line">    cmd.Parse (argc,argv);</span><br><span class="line"> </span><br><span class="line">    NodeContainer AdHocNode;</span><br><span class="line">    AdHocNode.Create(nAdHoc);</span><br><span class="line"> </span><br><span class="line">    YansWifiChannelHelper channel &#x3D; YansWifiChannelHelper::Default ();</span><br><span class="line">    YansWifiPhyHelper phy &#x3D; YansWifiPhyHelper::Default ();</span><br><span class="line">    phy.SetChannel (channel.Create ());</span><br><span class="line"> </span><br><span class="line">    WifiHelper wifi;</span><br><span class="line">    wifi.SetStandard(WIFI_PHY_STANDARD_80211a); &#x2F;&#x2F;设置标准</span><br><span class="line">    wifi.SetRemoteStationManager(&quot;ns3::ConstantRateWifiManager&quot;,&quot;DataMode&quot;,StringValue(&quot;OfdmRate6Mbps&quot;));</span><br><span class="line"> </span><br><span class="line">    NqosWifiMacHelper mac &#x3D; NqosWifiMacHelper::Default ();</span><br><span class="line">    mac.SetType (&quot;ns3::AdhocWifiMac&quot;,</span><br><span class="line">                   &quot;Slot&quot;, StringValue (&quot;16us&quot;));</span><br><span class="line"> </span><br><span class="line">    NetDeviceContainer AdHocDevices;</span><br><span class="line">    AdHocDevices &#x3D; wifi.Install(phy,mac,AdHocNode);</span><br><span class="line"> </span><br><span class="line">    MobilityHelper mobility;</span><br><span class="line">    mobility.SetPositionAllocator (&quot;ns3::GridPositionAllocator&quot;,</span><br><span class="line">                                     &quot;MinX&quot;, DoubleValue (0.0),</span><br><span class="line">                                     &quot;MinY&quot;, DoubleValue (0.0),</span><br><span class="line">                                     &quot;DeltaX&quot;, DoubleValue (5.0),</span><br><span class="line">                                     &quot;DeltaY&quot;, DoubleValue (5.0),</span><br><span class="line">                                     &quot;GridWidth&quot;, UintegerValue (10),</span><br><span class="line">                                     &quot;LayoutType&quot;, StringValue (&quot;RowFirst&quot;));</span><br><span class="line"> </span><br><span class="line">    mobility.SetMobilityModel (&quot;ns3::RandomWalk2dMobilityModel&quot;,</span><br><span class="line">                                 &quot;Bounds&quot;, RectangleValue (Rectangle (-500, 500, -500, 500)));</span><br><span class="line">    mobility.Install (AdHocNode);</span><br><span class="line"> </span><br><span class="line">    InternetStackHelper Internet;</span><br><span class="line">    Internet.Install(AdHocNode);</span><br><span class="line"> </span><br><span class="line">    Ipv4AddressHelper address;</span><br><span class="line">    address.SetBase(&quot;195.1.1.0&quot;,&quot;255.255.255.0&quot;);</span><br><span class="line"> </span><br><span class="line">    Ipv4InterfaceContainer AdHocIp;</span><br><span class="line">    AdHocIp &#x3D; address.Assign(AdHocDevices);</span><br><span class="line"> </span><br><span class="line">    NS_LOG_INFO (&quot;Create Applications.&quot;);</span><br><span class="line">    uint16_t port &#x3D; 9999;</span><br><span class="line">    OnOffHelper onOff1(&quot;ns3::TcpSocketFactory&quot;,Address(InetSocketAddress(AdHocIp.GetAddress(0),port)));</span><br><span class="line">    onOff1.SetAttribute (&quot;OnTime&quot;, StringValue (&quot;ns3::ConstantRandomVariable[Constant&#x3D;1]&quot;));</span><br><span class="line">    onOff1.SetAttribute (&quot;OffTime&quot;, StringValue (&quot;ns3::ConstantRandomVariable[Constant&#x3D;0]&quot;));</span><br><span class="line"> </span><br><span class="line">    ApplicationContainer apps1 &#x3D; onOff1.Install(AdHocNode);</span><br><span class="line">    apps1.Start(Seconds(1.0));</span><br><span class="line">    apps1.Stop(Seconds(500.0));</span><br><span class="line"> </span><br><span class="line">    PacketSinkHelper sinkHelper (&quot;ns3::TcpSocketFactory&quot;, Address(InetSocketAddress (Ipv4Address::GetAny(), port)));</span><br><span class="line">    ApplicationContainer apps2 &#x3D; sinkHelper.Install(AdHocNode.Get(0));</span><br><span class="line"> </span><br><span class="line">    apps2.Start(Seconds(0.0));</span><br><span class="line">    apps2.Stop(Seconds(500.0));</span><br><span class="line"> </span><br><span class="line">    Ipv4GlobalRoutingHelper::PopulateRoutingTables ();</span><br><span class="line"> </span><br><span class="line">    Simulator::Stop(Seconds(500.0));</span><br><span class="line">    Simulator::Run();</span><br><span class="line">    Simulator::Destroy();</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>其实代码我都是抄的（小声)</p>
-</blockquote>
-
+          <h2 id="模拟一个1千平方米的，场景中分布了30个adhoc-节点，其余节点向0号节点不断发送数据"><a href="#模拟一个1千平方米的，场景中分布了30个adhoc-节点，其余节点向0号节点不断发送数据" class="headerlink" title="模拟一个1千平方米的，场景中分布了30个adhoc 节点，其余节点向0号节点不断发送数据"></a>模拟一个1千平方米的，场景中分布了30个adhoc 节点，其余节点向0号节点不断发送数据</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/22/%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ENS3%E7%9A%84adhoc%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -455,10 +408,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-22 21:47:17 / 修改时间：22:14:19" itemprop="dateCreated datePublished" datetime="2020-04-22T21:47:17+08:00">2020-04-22</time>
+              <time title="创建时间：2020-04-22 21:47:17" itemprop="dateCreated datePublished" datetime="2020-04-22T21:47:17+08:00">2020-04-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-23 16:54:00" itemprop="dateModified" datetime="2020-04-23T16:54:00+08:00">2020-04-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -480,10 +439,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Hexo常见命令"><a href="#Hexo常见命令" class="headerlink" title="Hexo常见命令"></a>Hexo常见命令</h2><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #部署到GitHub<br>hexo help  # 查看帮助<br>hexo version  #查看Hexo的版本</p>
-<p>缩写：<br>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy</p>
-<p>组合命令：<br>hexo s -g #生成并本地预览<br>hexo d -g #生成并上传</p>
-
+          <h2 id="Hexo常见命令"><a href="#Hexo常见命令" class="headerlink" title="Hexo常见命令"></a>Hexo常见命令</h2><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/22/hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -732,10 +696,7 @@
       </div>
 
     </div>
-    <div id="music163player">
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=492390949&auto=1&height=66">
-    </iframe>
-    </div>
+
 
   </aside>
   <div id="sidebar-dimmer"></div>
