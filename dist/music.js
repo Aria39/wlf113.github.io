@@ -6,7 +6,8 @@ const ap = new APlayer({
       {
         name: '星茶会',
         artist: '灰澈',
-        url: 'http://music.163.com/song/media/outer/url?id=492390949.mp3',
+        //url: 'http://music.163.com/song/media/outer/url?id=492390949.mp3',
+        url: 'http://music.163.com/song/media/outer/url?id=1370901758.mp3',
         cover: '/images/music/星茶会.jpg',
       },
       {
