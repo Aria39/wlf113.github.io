@@ -8,7 +8,7 @@ var aplayers = [],
         fixed: null,
         autoplay: !1, //控制自动播放
         mutex: !0,
-        lrcType: 3,
+        lrcType: 0, //歌词
         listFolded: !1,
         preload: 'auto',
         theme: '#2980b9',
