@@ -30,7 +30,7 @@
 <meta property="og:description" content="1.什么是SQL？    Structured Query Language：结构化查询语言    其实就是定义了操作所有关系型数据库的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。 2.SQL通用语法    1. SQL 语句可以单行或多行书写，以分号结尾。    2. 可使用空格和缩进来增强语句的可读性。    3. MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-25T08:58:47.000Z">
-<meta property="article:modified_time" content="2020-09-05T11:00:13.032Z">
+<meta property="article:modified_time" content="2020-09-07T13:29:50.749Z">
 <meta property="article:author" content="兴趣使然">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
@@ -194,8 +194,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-05 19:00:13" itemprop="dateModified" datetime="2020-09-05T19:00:13+08:00">2020-09-05</time>
+                <time title="修改时间：2020-09-07 21:29:50" itemprop="dateModified" datetime="2020-09-07T21:29:50+08:00">2020-09-07</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                </span>
+            </span>
 
           
 
@@ -413,6 +422,7 @@ limit
 4. sum：计算和
 5. avg：计算平均值
 
+例如：SELECT MAX(列名) FROM 表名;
 
 * 注意：聚合函数的计算，排除null值。
     解决方案：
@@ -658,13 +668,43 @@ limit
 1.内连接查询：
     1.隐式内连接：使用where消除无用的数据 
     2.显式内连接：
-        * 语法：select 字段列表 from 表名1 inner(可省略) join 表名2 on 条件
+        * 语法：select 字段列表 from 表1 [inner] join 表2 on 条件
+        * 例如：select * from emp join dept on emp.`dept_id` = dept.`id`;
     3.内连接查询：
         1.从哪些表中查询数据
         2.条件是什么
         3.查询哪些字段
-2.外连接查询
-3.子查询</code></pre>
+2.外连接查询:
+    1.左外连接：
+        * 语法:select 字段列表 from 表1(左表) left [outer] join 表2(右表) on 条件;
+        * 查询的是左表所有数据以及其交集部分。(内连接查询的就是交集的部分)
+        * 例如：SELECT t1.*,t2.`name` FROM emp t1 LEFT JOIN dept ON t1.`dept_id` = t2.`id`;
+    2.右外连接：
+        * 语法:select 字段列表 from 表1(左表) right [outer] join 表2(右表) on 条件;
+        * 查询的是右表所有数据以及其交集部分。
+3.子查询：
+    * 概念:查询中嵌套查询，称嵌套查询为子查询。
+     *例如：SELECT * FROM emp WHERE emp.`salary` = (SELECT MAX(salary) FROM emp); -- 查询工资最高的员工
+
+    *子查询的不同情况
+        1.子查询的结果是单行单列的：
+            * 子查询可以作为条件，使用运算符去判断。运算符：&gt; &gt;= &lt; &lt;= =
+            * 例如:SELECT * FROM emp WHERE emp.`salary` &lt; (SELECT AVG(salary) FROM emp); -- 查询工资小于平均工资的人
+        2.子查询的结果是多行单列的：
+            * 子查询可以作为条件，使用运算符in来判断。
+            * 例如:SELECT * FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE NAME = &apos;财务部&apos; OR NAME = &apos;市场部&apos;); -- 查询&apos;财务部&apos;和&apos;市场部&apos;所有员工信息
+        3.子查询的结果是多行多列的：
+            * 子查询可以作为一个虚拟表，参与查询
+            * 例如：
+                SELECT 
+                    * 
+                FROM 
+                    dept t1 , 
+                    (SELECT * FROM emp WHERE emp.`join_date` &gt; &apos;2008-01-01&apos;) t2
+                WHERE 
+                    t1.id = t2.dept_id; -- 查询员工的入职日期是2008-01-01后的员工信息和部门信息        
+
+                其实不用内连接也可以：SELECT * FROM emp t1,dept t2 WHERE t1.`dept_id` = t2.`id` AND join_date &gt; &apos;2008-01-01&apos;;        </code></pre>
     </div>
 
     
@@ -770,7 +810,7 @@ limit
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
