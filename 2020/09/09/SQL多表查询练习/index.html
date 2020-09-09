@@ -22,21 +22,20 @@
     var CONFIG = {"hostname":"wlf113.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Hexo常见命令hexo new “postName” #新建文章hexo new page “pageName” #新建页面">
+  <meta name="description" content="– 部门表CREATE TABLE dept (  id INT PRIMARY KEY PRIMARY KEY, – 部门id  dname VARCHAR(50), – 部门名称  loc VARCHAR(50) – 部门所在地);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo常见命令">
-<meta property="og:url" content="http://wlf113.github.io/2020/04/22/hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="SQL多表查询练习">
+<meta property="og:url" content="http://wlf113.github.io/2020/09/09/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0/index.html">
 <meta property="og:site_name" content="wlfBlog">
-<meta property="og:description" content="Hexo常见命令hexo new “postName” #新建文章hexo new page “pageName” #新建页面">
+<meta property="og:description" content="– 部门表CREATE TABLE dept (  id INT PRIMARY KEY PRIMARY KEY, – 部门id  dname VARCHAR(50), – 部门名称  loc VARCHAR(50) – 部门所在地);">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-22T13:47:17.000Z">
-<meta property="article:modified_time" content="2020-04-23T08:54:00.730Z">
+<meta property="article:published_time" content="2020-09-09T02:01:25.000Z">
+<meta property="article:modified_time" content="2020-09-09T02:08:26.407Z">
 <meta property="article:author" content="兴趣使然">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wlf113.github.io/2020/04/22/hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
+<link rel="canonical" href="http://wlf113.github.io/2020/09/09/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0/">
 
 
 <script id="page-configurations">
@@ -49,7 +48,7 @@
   };
 </script>
 
-  <title>hexo常见命令 | wlfBlog</title>
+  <title>SQL多表查询练习 | wlfBlog</title>
   
 
 
@@ -165,7 +164,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wlf113.github.io/2020/04/22/hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="http://wlf113.github.io/2020/09/09/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -178,7 +177,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo常见命令
+          SQL多表查询练习
         </h1>
 
         <div class="post-meta">
@@ -187,23 +186,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-22 21:47:17" itemprop="dateCreated datePublished" datetime="2020-04-22T21:47:17+08:00">2020-04-22</time>
+              <time title="创建时间：2020-09-09 10:01:25 / 修改时间：10:08:26" itemprop="dateCreated datePublished" datetime="2020-09-09T10:01:25+08:00">2020-09-09</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-23 16:54:00" itemprop="dateModified" datetime="2020-04-23T16:54:00+08:00">2020-04-23</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
                 </span>
             </span>
 
@@ -218,12 +211,96 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Hexo常见命令"><a href="#Hexo常见命令" class="headerlink" title="Hexo常见命令"></a>Hexo常见命令</h2><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面</p>
-<a id="more"></a> 
-<p>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #部署到GitHub<br>hexo help  # 查看帮助<br>hexo version  #查看Hexo的版本</p>
-<p>缩写：<br>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy</p>
-<p>组合命令：<br>hexo s -g #生成并本地预览<br>hexo d -g #生成并上传</p>
+        <p>– 部门表<br>CREATE TABLE dept (<br>  id INT PRIMARY KEY PRIMARY KEY, – 部门id<br>  dname VARCHAR(50), – 部门名称<br>  loc VARCHAR(50) – 部门所在地<br>);</p>
+<a id="more"></a>
 
+<p>– 添加4个部门<br>INSERT INTO dept(id,dname,loc) VALUES<br>(10,’教研部’,’北京’),<br>(20,’学工部’,’上海’),<br>(30,’销售部’,’广州’),<br>(40,’财务部’,’深圳’);</p>
+<p>– 职务表，职务名称，职务描述<br>CREATE TABLE job (<br>  id INT PRIMARY KEY,<br>  jname VARCHAR(20),<br>  description VARCHAR(50)<br>);</p>
+<p>– 添加4个职务<br>INSERT INTO job (id, jname, description) VALUES<br>(1, ‘董事长’, ‘管理整个公司，接单’),<br>(2, ‘经理’, ‘管理部门员工’),<br>(3, ‘销售员’, ‘向客人推销产品’),<br>(4, ‘文员’, ‘使用办公软件’);</p>
+<p>– 员工表<br>CREATE TABLE emp (<br>  id INT PRIMARY KEY, – 员工id<br>  ename VARCHAR(50), – 员工姓名<br>  job_id INT, – 职务id<br>  mgr INT , – 上级领导<br>  joindate DATE, – 入职日期<br>  salary DECIMAL(7,2), – 工资<br>  bonus DECIMAL(7,2), – 奖金<br>  dept_id INT, – 所在部门编号<br>  CONSTRAINT emp_jobid_ref_job_id_fk FOREIGN KEY (job_id) REFERENCES job (id),<br>  CONSTRAINT emp_deptid_ref_dept_id_fk FOREIGN KEY (dept_id) REFERENCES dept (id)<br>);</p>
+<p>– 添加员工<br>INSERT INTO emp(id,ename,job_id,mgr,joindate,salary,bonus,dept_id) VALUES<br>(1001,’孙悟空’,4,1004,’2000-12-17’,’8000.00’,NULL,20),<br>(1002,’卢俊义’,3,1006,’2001-02-20’,’16000.00’,’3000.00’,30),<br>(1003,’林冲’,3,1006,’2001-02-22’,’12500.00’,’5000.00’,30),<br>(1004,’唐僧’,2,1009,’2001-04-02’,’29750.00’,NULL,20),<br>(1005,’李逵’,4,1006,’2001-09-28’,’12500.00’,’14000.00’,30),<br>(1006,’宋江’,2,1009,’2001-05-01’,’28500.00’,NULL,30),<br>(1007,’刘备’,2,1009,’2001-09-01’,’24500.00’,NULL,10),<br>(1008,’猪八戒’,4,1004,’2007-04-19’,’30000.00’,NULL,20),<br>(1009,’罗贯中’,1,NULL,’2001-11-17’,’50000.00’,NULL,10),<br>(1010,’吴用’,3,1006,’2001-09-08’,’15000.00’,’0.00’,30),<br>(1011,’沙僧’,4,1004,’2007-05-23’,’11000.00’,NULL,20),<br>(1012,’李逵’,4,1006,’2001-12-03’,’9500.00’,NULL,30),<br>(1013,’小白龙’,4,1004,’2001-12-03’,’30000.00’,NULL,20),<br>(1014,’关羽’,4,1007,’2002-01-23’,’13000.00’,NULL,10);</p>
+<p>– 工资等级表<br>CREATE TABLE salarygrade (<br>  grade INT PRIMARY KEY,   – 级别<br>  losalary INT,  – 最低工资<br>  hisalary INT – 最高工资<br>);</p>
+<p>– 添加5个工资等级<br>INSERT INTO salarygrade(grade,losalary,hisalary) VALUES<br>(1,7000,12000),<br>(2,12010,14000),<br>(3,14010,20000),<br>(4,20010,30000),<br>(5,30010,99990);</p>
+<h2 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h2><h3 id="1-查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述"><a href="#1-查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述" class="headerlink" title="1.查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述"></a>1.查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述</h3><pre><code>SELECT emp.`id`,emp.`ename`,emp.`salary`,job.`jname`,job.`description` FROM emp INNER JOIN job ON emp.`job_id` = job.`id`;
+
+SELECT 
+    t1.`id`,
+    t1.`ename`,
+    t1.`salary`,
+    t2.`jname`,
+    t2.`description`
+FROM
+    emp t1 , job t2
+WHERE 
+    t1.`job_id` = t2.`id`;</code></pre><h3 id="2-查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置"><a href="#2-查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置" class="headerlink" title="2.查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置"></a>2.查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置</h3><pre><code>SELECT
+    t1.`id`,
+    t1.`ename`,
+    t1.`salary`,
+    t2.`jname`,
+    t2.`description`,
+    t3.`dname`,
+    t3.`loc`
+FROM
+    emp t1,job t2,dept t3
+WHERE 
+    t1.`job_id` = t2.`id` AND t1.`dept_id` = t3.`id`;</code></pre><h3 id="3-查询员工姓名，工资，工资等级"><a href="#3-查询员工姓名，工资，工资等级" class="headerlink" title="3.查询员工姓名，工资，工资等级"></a>3.查询员工姓名，工资，工资等级</h3><pre><code>SELECT 
+    t1.`ename`,
+    t1.`salary`,
+    t2.`grade`
+FROM
+    emp t1,salarygrade t2
+WHERE 
+    t1.`salary` BETWEEN t2.`losalary` AND t2.`hisalary`;</code></pre><h3 id="4-查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级"><a href="#4-查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级" class="headerlink" title="4.查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级"></a>4.查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级</h3><pre><code>SELECT
+    t1.`ename`,
+    t1.`salary`,
+    t2.`jname`,
+    t2.`description`,
+    t3.`dname`,
+    t3.`loc`,
+    t4.`grade`
+FROM
+    emp t1,job t2,dept t3,salarygrade t4
+WHERE
+    t1.`job_id` = t2.`id` 
+    AND t1.`dept_id` = t3.`id`
+    AND t1.`salary` BETWEEN t4.`losalary` AND t4.`hisalary`;</code></pre><h3 id="5-查询出部门编号、部门名称、部门位置、部门人数"><a href="#5-查询出部门编号、部门名称、部门位置、部门人数" class="headerlink" title="5.查询出部门编号、部门名称、部门位置、部门人数"></a>5.查询出部门编号、部门名称、部门位置、部门人数</h3><pre><code>SELECT
+    dept_id,COUNT(id) total
+FROM
+    emp
+GROUP BY
+    dept_id; -- 分组查询
+
+SELECT
+    t1.`id`,
+    t1.`dname`,
+    t1.`loc`,
+    t2.total
+FROM
+    dept t1,
+    (SELECT dept_id,COUNT(id) total FROM emp GROUP BY dept_id) t2 
+WHERE
+    t1.`id` = t2.dept_id;    </code></pre><h3 id="6-查询所有员工的姓名及其直接上级的姓名-没有领导的员工也需要查询"><a href="#6-查询所有员工的姓名及其直接上级的姓名-没有领导的员工也需要查询" class="headerlink" title="6.查询所有员工的姓名及其直接上级的姓名,没有领导的员工也需要查询"></a>6.查询所有员工的姓名及其直接上级的姓名,没有领导的员工也需要查询</h3><pre><code>SELECT 
+    t1.`ename` 员工,
+    t1.`mgr`,
+    t2.`id`,
+    t2.`ename` 上级
+FROM
+    emp t1,emp t2
+WHERE
+    t1.`mgr` = t2.`id`; -- 没有领导
+
+
+SELECT 
+    t1.`ename` 员工,
+    t1.`mgr`,
+    t2.`id`,
+    t2.`ename` 上级
+FROM
+    emp t1
+LEFT JOIN
+    emp t2
+ON
+    t1.`mgr` = t2.`id`; -- 外连接</code></pre>
     </div>
 
     
@@ -232,8 +309,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
-              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
           </div>
 
         
@@ -242,13 +318,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/21/My-First-Blog/" rel="prev" title="My-First-Blog">
-      <i class="fa fa-chevron-left"></i> My-First-Blog
+    <a href="/2020/09/05/%E5%9C%A8%E7%BA%BF%E8%B4%AA%E5%90%83%E8%9B%87/" rel="prev" title="在线贪吃蛇">
+      <i class="fa fa-chevron-left"></i> 在线贪吃蛇
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/04/22/%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ENS3%E7%9A%84adhoc%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/" rel="next" title="一个基于NS3的adhoc网络模型">
-      一个基于NS3的adhoc网络模型 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -307,7 +380,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo常见命令"><span class="nav-number">1.</span> <span class="nav-text">Hexo常见命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求："><span class="nav-number">1.</span> <span class="nav-text">需求：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述"><span class="nav-number">1.1.</span> <span class="nav-text">1.查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置"><span class="nav-number">1.2.</span> <span class="nav-text">2.查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查询员工姓名，工资，工资等级"><span class="nav-number">1.3.</span> <span class="nav-text">3.查询员工姓名，工资，工资等级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级"><span class="nav-number">1.4.</span> <span class="nav-text">4.查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-查询出部门编号、部门名称、部门位置、部门人数"><span class="nav-number">1.5.</span> <span class="nav-text">5.查询出部门编号、部门名称、部门位置、部门人数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查询所有员工的姓名及其直接上级的姓名-没有领导的员工也需要查询"><span class="nav-number">1.6.</span> <span class="nav-text">6.查询所有员工的姓名及其直接上级的姓名,没有领导的员工也需要查询</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
