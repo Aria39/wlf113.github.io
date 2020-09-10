@@ -30,7 +30,7 @@
 <meta property="og:description" content="1.什么是SQL？    Structured Query Language：结构化查询语言    其实就是定义了操作所有关系型数据库的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。 2.SQL通用语法    1. SQL 语句可以单行或多行书写，以分号结尾。    2. 可使用空格和缩进来增强语句的可读性。    3. MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-25T08:58:47.000Z">
-<meta property="article:modified_time" content="2020-09-09T13:37:16.519Z">
+<meta property="article:modified_time" content="2020-09-10T13:00:21.711Z">
 <meta property="article:author" content="兴趣使然">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 21:37:16" itemprop="dateModified" datetime="2020-09-09T21:37:16+08:00">2020-09-09</time>
+                <time title="修改时间：2020-09-10 21:00:21" itemprop="dateModified" datetime="2020-09-10T21:00:21+08:00">2020-09-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -775,9 +775,45 @@ limit
 * DCL：管理用户，授权
     1. 管理用户
         1.添加用户：
+            CREATE USER &apos;用户名&apos;@&apos;主机名&apos; IDENTIFIED BY &apos;密码&apos;;
+            例如：CREATE USER &apos;wlf&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;123&apos;;
         2.删除用户：
+            DROP USER &apos;用户名&apos;@&apos;主机名&apos;;
         3.修改用户密码：
-        4.查询用户：</code></pre>
+            方法一：
+                UPDATE USER SET PASSWORD = PASSWORD(&apos;新密码&apos;) WHERE USER = &apos;用户名&apos;;
+                FLUSH PRIVILEGES; -- 可能需要刷新权限
+            方法二：
+                SET PASSWORD FOR &apos;用户名&apos;@&apos;主机名&apos; = PASSWORD(&apos;新密码&apos;);
+
+            * mysql忘记root用户的密码?
+                1.cmd -- &gt; new stop mysql 停止mysql服务(需要管理员运行cmd)
+                2.使用无验证方式启动mysql服务：mysqld --skip-grant-tables
+                3.打开新的cmd窗口，直接输入mysql，敲回车，就可以登录成功
+                4.use mysql;
+                5.update user set password = password(&apos;新密码&apos;) where user = &apos;root&apos;;
+                6.关闭两个cmd窗口
+                7.打开任务管理器，手动结束mysqld.exe进程
+                8.管理员身份运行cmd，启动mysql服务，net start mysql
+                9.使用新密码登录 mysql -uroot -p新密码
+        4.查询用户：
+            -- 切换到mysql数据库
+            USE mysql;
+            -- 查询user表
+            SELECT * FROM USER;
+
+            * 通配符：% 表示可以在任意主机使用用户登录数据库
+    2. 权限管理
+        1.权限查询
+            SHOW GRANTS FOR &apos;用户名&apos;@&apos;主机名&apos;;
+        2.授予权限
+            GRANT 权限列表 ON 数据库名.表名 TO &apos;用户名&apos;@&apos;主机名&apos;;
+            例如：
+            GRANT SELECT,DELETE,UPDATE ON db1.`account` TO &apos;miku&apos;@&apos;%&apos;;-- 授予miku用户查询权限给db1的account表上
+            GRANT ALL ON *.* TO &apos;luka&apos;@&apos;%&apos;; -- 授予miku用户所有权限给任意数据库任意表上
+        3.撤销权限
+            REVOKE 权限列表 ON 数据库名.表名 FROM &apos;用户名&apos;@&apos;主机名&apos;;
+              例如：REVOKE UPDATE ON db1.`account` FROM &apos;miku&apos;@&apos;%&apos;; --撤销miku用户查询权限</code></pre>
     </div>
 
     
