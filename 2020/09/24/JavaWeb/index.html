@@ -30,7 +30,7 @@
 <meta property="og:description" content="web概念概述* JavaWeb:使用Java语言开发基于互联网的项目  * 软件架构:     1.C&#x2F;S:Client&#x2F;Server 客户端&#x2F;服务器端         * 本地有个客户端程序，远处有个服务器端         * 优点：用户体验好         * 缺点：开发，安装，部署，维护麻烦     2.B&#x2F;S:Browser&#x2F;Server 浏览器&#x2F;服务器端         * 只需要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-24T11:54:19.000Z">
-<meta property="article:modified_time" content="2020-09-24T13:09:53.073Z">
+<meta property="article:modified_time" content="2020-09-24T13:12:05.666Z">
 <meta property="article:author" content="兴趣使然">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-24 19:54:19 / 修改时间：21:09:53" itemprop="dateCreated datePublished" datetime="2020-09-24T19:54:19+08:00">2020-09-24</time>
+              <time title="创建时间：2020-09-24 19:54:19 / 修改时间：21:12:05" itemprop="dateCreated datePublished" datetime="2020-09-24T19:54:19+08:00">2020-09-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,91 +275,85 @@
 
         &lt;/body&gt;
 
-    &lt;/html&gt;</code></pre><h3 id="标签学习："><a href="#标签学习：" class="headerlink" title="标签学习："></a>标签学习：</h3><pre><code>1.文件标签：构成html最基本的标签
-    * html:html文档的根标签
-    * head：头标签,用于指定html文档的一些属性,引入外部的资源
-    * title：标题标签
-    * body：体标签
-    * &lt;!DOCTYPE html&gt;：html5中定义该文档是html文档
-2.文本标签：和文本有关的标签
-    * 注释：&lt;!-- 注释内容 --&gt;
-    * &lt;h1&gt; to &lt;h6&gt;：标题标签
-        * h1~h6:字体大小逐渐递减
-    * &lt;p&gt;：段落标签
-    * &lt;br&gt;：换行标签
-    * &lt;hr&gt;：展示一条水平线
-        * 属性：
-            * color：颜色
-            * width：宽度
-            * size：高度
-            * align：对其方式
-                * center：居中
-                * left：左对齐
-                * right：右对齐
-    * &lt;b&gt;：字体加粗
-    * &lt;i&gt;：字体斜体
-    * &lt;font&gt;:字体标签
-    * &lt;center&gt;:文本居中
-        * 属性：
-            * color：颜色
-            * size：大小
-            * face：字体
+    &lt;/html&gt;</code></pre><h3 id="标签学习："><a href="#标签学习：" class="headerlink" title="标签学习："></a>标签学习：</h3><h4 id="文件标签：构成html最基本的标签"><a href="#文件标签：构成html最基本的标签" class="headerlink" title="文件标签：构成html最基本的标签"></a>文件标签：构成html最基本的标签</h4><pre><code>* html:html文档的根标签
+* head：头标签,用于指定html文档的一些属性,引入外部的资源
+* title：标题标签
+* body：体标签
+* &lt;!DOCTYPE html&gt;：html5中定义该文档是html文档</code></pre><h4 id="文本标签：和文本有关的标签"><a href="#文本标签：和文本有关的标签" class="headerlink" title="文本标签：和文本有关的标签"></a>文本标签：和文本有关的标签</h4><pre><code>* 注释：&lt;!-- 注释内容 --&gt;
+* &lt;h1&gt; to &lt;h6&gt;：标题标签
+    * h1~h6:字体大小逐渐递减
+* &lt;p&gt;：段落标签
+* &lt;br&gt;：换行标签
+* &lt;hr&gt;：展示一条水平线
+    * 属性：
+        * color：颜色
+        * width：宽度
+        * size：高度
+        * align：对其方式
+            * center：居中
+            * left：左对齐
+            * right：右对齐
+* &lt;b&gt;：字体加粗
+* &lt;i&gt;：字体斜体
+* &lt;font&gt;:字体标签
+* &lt;center&gt;:文本居中
+    * 属性：
+        * color：颜色
+        * size：大小
+        * face：字体
 
-    * 属性定义：
-        * color：
-            1. 英文单词：red,green,blue
-            2. rgb(值1，值2，值3)：值的范围：0~255  如  rgb(0,0,255)
-            3. #值1值2值3：值的范围：00~FF之间。如： #FF00FF
-        * width：
-            1. 数值：width=&apos;20&apos; ,数值的单位，默认是 px(像素)
-            2. 数值%：占比相对于父元素的比例
+* 属性定义：
+    * color：
+        1. 英文单词：red,green,blue
+        2. rgb(值1，值2，值3)：值的范围：0~255  如  rgb(0,0,255)
+        3. #值1值2值3：值的范围：00~FF之间。如： #FF00FF
+    * width：
+        1. 数值：width=&apos;20&apos; ,数值的单位，默认是 px(像素)
+        2. 数值%：占比相对于父元素的比例
 
-    * 案例：公司简介
-        &lt;!DOCTYPE html&gt;
-        &lt;html lang=&quot;ch&quot;&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;黑马程序员简介&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
+* 案例：公司简介
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang=&quot;ch&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;黑马程序员简介&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
 
-        &lt;h1&gt;
-            公司简介
-        &lt;/h1&gt;
-        &lt;hr color=&quot;#ffd700&quot;&gt;
+    &lt;h1&gt;
+        公司简介
+    &lt;/h1&gt;
+    &lt;hr color=&quot;#ffd700&quot;&gt;
 
-        &lt;p&gt;
-        &lt;font color=&quot;#FF0000&quot;&gt;&quot;中关村黑马程序员训练营&quot;&lt;/font&gt;是由&lt;b&gt;&lt;i&gt;传智播客&lt;/i&gt;&lt;/b&gt;联合中关村软件园、CSDN， 并委托传智播客进行教学实施的软件开发高端培训机构，致力于服务各大软件企业，解决当前软件开发技术飞速发展， 而企业招不到优秀人才的困扰。
-        &lt;/p&gt;
+    &lt;p&gt;
+    &lt;font color=&quot;#FF0000&quot;&gt;&quot;中关村黑马程序员训练营&quot;&lt;/font&gt;是由&lt;b&gt;&lt;i&gt;传智播客&lt;/i&gt;&lt;/b&gt;联合中关村软件园、CSDN， 并委托传智播客进行教学实施的软件开发高端培训机构，致力于服务各大软件企业，解决当前软件开发技术飞速发展， 而企业招不到优秀人才的困扰。
+    &lt;/p&gt;
 
-        &lt;p&gt;
-        目前，“中关村黑马程序员训练营”已成长为行业“学员质量好、课程内容深、企业满意”的移动开发高端训练基地， 并被评为中关村软件园重点扶持人才企业。
-        &lt;/p&gt;
+    &lt;p&gt;
+    目前，“中关村黑马程序员训练营”已成长为行业“学员质量好、课程内容深、企业满意”的移动开发高端训练基地， 并被评为中关村软件园重点扶持人才企业。
+    &lt;/p&gt;
 
-        &lt;p&gt;
+    &lt;p&gt;
 
-        黑马程序员的学员多为大学毕业后，有理想、有梦想，想从事IT行业，而没有环境和机遇改变自己命运的年轻人。 黑马程序员的学员筛选制度，远比现在90%以上的企业招聘流程更为严格。任何一名学员想成功入学“黑马程序员”， 必须经历长达2个月的面试流程，这些流程中不仅包括严格的技术测试、自学能力测试，还包括性格测试、压力测试、 品德测试等等测试。毫不夸张地说，黑马程序员训练营所有学员都是精挑细选出来的。百里挑一的残酷筛选制度确 保学员质量，并降低企业的用人风险。
-        中关村黑马程序员训练营不仅着重培养学员的基础理论知识，更注重培养项目实施管理能力，并密切关注技术革新， 不断引入先进的技术，研发更新技术课程，确保学员进入企业后不仅能独立从事开发工作，更能给企业带来新的技术体系和理念。
-        &lt;/p&gt;
+    黑马程序员的学员多为大学毕业后，有理想、有梦想，想从事IT行业，而没有环境和机遇改变自己命运的年轻人。 黑马程序员的学员筛选制度，远比现在90%以上的企业招聘流程更为严格。任何一名学员想成功入学“黑马程序员”， 必须经历长达2个月的面试流程，这些流程中不仅包括严格的技术测试、自学能力测试，还包括性格测试、压力测试、 品德测试等等测试。毫不夸张地说，黑马程序员训练营所有学员都是精挑细选出来的。百里挑一的残酷筛选制度确 保学员质量，并降低企业的用人风险。
+    中关村黑马程序员训练营不仅着重培养学员的基础理论知识，更注重培养项目实施管理能力，并密切关注技术革新， 不断引入先进的技术，研发更新技术课程，确保学员进入企业后不仅能独立从事开发工作，更能给企业带来新的技术体系和理念。
+    &lt;/p&gt;
 
-        &lt;p&gt;
+    &lt;p&gt;
 
-        一直以来，黑马程序员以技术视角关注IT产业发展，以深度分享推进产业技术成长，致力于弘扬技术创新，倡导分享、 开放和协作，努力打造高质量的IT人才服务平台。
-        &lt;/p&gt;
+    一直以来，黑马程序员以技术视角关注IT产业发展，以深度分享推进产业技术成长，致力于弘扬技术创新，倡导分享、 开放和协作，努力打造高质量的IT人才服务平台。
+    &lt;/p&gt;
 
-        &lt;hr color=&quot;#ffd700&quot;&gt;
+    &lt;hr color=&quot;#ffd700&quot;&gt;
 
-        &lt;font color=&quot;gray&quot; size=&quot;2&quot;&gt;
-            &lt;center&gt;
-                江苏传智播客教育科技股份有限公司&lt;br&gt;
-                版权所有Copyright 2006-2018&amp;copy;, All Rights Reserved 苏ICP备16007882
-            &lt;/center&gt;
-        &lt;/font&gt;
-
-
-
-        &lt;/body&gt;
-        &lt;/html&gt;
+    &lt;font color=&quot;gray&quot; size=&quot;2&quot;&gt;
+        &lt;center&gt;
+            江苏传智播客教育科技股份有限公司&lt;br&gt;
+            版权所有Copyright 2006-2018&amp;copy;, All Rights Reserved 苏ICP备16007882
+        &lt;/center&gt;
+    &lt;/font&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
 
 3. 图片标签：
     * img：展示图片
@@ -520,7 +514,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web概念概述"><span class="nav-number">1.</span> <span class="nav-text">web概念概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">2.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：是最基础的网页开发语言"><span class="nav-number">2.1.</span> <span class="nav-text">概念：是最基础的网页开发语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速入门："><span class="nav-number">2.2.</span> <span class="nav-text">快速入门：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签学习："><span class="nav-number">2.3.</span> <span class="nav-text">标签学习：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web概念概述"><span class="nav-number">1.</span> <span class="nav-text">web概念概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">2.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：是最基础的网页开发语言"><span class="nav-number">2.1.</span> <span class="nav-text">概念：是最基础的网页开发语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速入门："><span class="nav-number">2.2.</span> <span class="nav-text">快速入门：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签学习："><span class="nav-number">2.3.</span> <span class="nav-text">标签学习：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件标签：构成html最基本的标签"><span class="nav-number">2.3.1.</span> <span class="nav-text">文件标签：构成html最基本的标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本标签：和文本有关的标签"><span class="nav-number">2.3.2.</span> <span class="nav-text">文本标签：和文本有关的标签</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
