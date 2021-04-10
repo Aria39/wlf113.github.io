@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wlf113.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简介ConcurrentHashMap 是一个线程安全的散列表，存储的内容是键值对映射。ConcurrentHashMap 继承于AbstractMap，实现了ConcurrentMap、Serializable接口。ConcurrentHashMap 存储的键值对是无序的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合 —— ConcurrentHashMap">
+<meta property="og:url" content="http://wlf113.github.io/2021/01/04/ConcurrentHashMap/index.html">
+<meta property="og:site_name" content="wlfBlog">
+<meta property="og:description" content="简介ConcurrentHashMap 是一个线程安全的散列表，存储的内容是键值对映射。ConcurrentHashMap 继承于AbstractMap，实现了ConcurrentMap、Serializable接口。ConcurrentHashMap 存储的键值对是无序的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-04T02:51:06.000Z">
+<meta property="article:modified_time" content="2021-04-10T06:23:54.490Z">
+<meta property="article:author" content="兴趣使然">
+<meta property="article:tag" content="Java集合">
+<meta property="article:tag" content="ConcurrentHashMap">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wlf113.github.io/2021/01/04/ConcurrentHashMap/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java集合 —— ConcurrentHashMap | wlfBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">wlfBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wlf113.github.io/2021/01/04/ConcurrentHashMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="兴趣使然">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wlfBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java集合 —— ConcurrentHashMap
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-04 10:51:06" itemprop="dateCreated datePublished" datetime="2021-01-04T10:51:06+08:00">2021-01-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-10 14:23:54" itemprop="dateModified" datetime="2021-04-10T14:23:54+08:00">2021-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>ConcurrentHashMap 是一个线程安全的散列表，存储的内容是键值对映射。<br>ConcurrentHashMap 继承于AbstractMap，实现了ConcurrentMap、Serializable接口。<br>ConcurrentHashMap 存储的键值对是无序的。</p>
+<a id="more"></a> 
+
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><h2 id="父类"><a href="#父类" class="headerlink" title="父类"></a>父类</h2><ul>
+<li>AbstractMap</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>ConcurrentMap</li>
+<li>Serializable</li>
+</ul>
+<h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 数组最大容量</span><br><span class="line">private static final int MAXIMUM_CAPACITY &#x3D; 1 &lt;&lt; 30;</span><br><span class="line">&#x2F;&#x2F; 数组初始默认容量</span><br><span class="line">private static final int DEFAULT_CAPACITY &#x3D; 16;</span><br><span class="line">&#x2F;&#x2F; 将HashMap转化为数组输出的最大容量</span><br><span class="line">static final int MAX_ARRAY_SIZE &#x3D; Integer.MAX_VALUE - 8;</span><br><span class="line">&#x2F;&#x2F; 默认并发级别</span><br><span class="line">private static final int DEFAULT_CONCURRENCY_LEVEL &#x3D; 16;</span><br><span class="line">&#x2F;&#x2F; 默认负载因子</span><br><span class="line">private static final float LOAD_FACTOR &#x3D; 0.75f;</span><br><span class="line">&#x2F;&#x2F; 树化阈值</span><br><span class="line">static final int TREEIFY_THRESHOLD &#x3D; 8;</span><br><span class="line">&#x2F;&#x2F; 树退化阈值</span><br><span class="line">static final int UNTREEIFY_THRESHOLD &#x3D; 6;</span><br><span class="line">&#x2F;&#x2F; 最小数化的数组大小</span><br><span class="line">static final int MIN_TREEIFY_CAPACITY &#x3D; 64;</span><br><span class="line">&#x2F;&#x2F; 扩容线程每次最少要迁移16个hash桶</span><br><span class="line">private static final int MIN_TRANSFER_STRIDE &#x3D; 16;</span><br><span class="line">&#x2F;&#x2F; 最多可以同时扩容的线程数量</span><br><span class="line">private static final int MAX_RESIZERS &#x3D; (1 &lt;&lt; (32 - RESIZE_STAMP_BITS)) - 1;</span><br><span class="line">&#x2F;&#x2F; 用来控制扩容的时候 单线程进入的变量</span><br><span class="line">&#x2F;&#x2F; resize校验码</span><br><span class="line">private static int RESIZE_STAMP_BITS &#x3D; 16;</span><br><span class="line">&#x2F;&#x2F; resize校验码的位移量</span><br><span class="line">private static final int RESIZE_STAMP_SHIFT &#x3D; 32 - RESIZE_STAMP_BITS;</span><br><span class="line"></span><br><span class="line">static final int MOVED     &#x3D; -1; &#x2F;&#x2F; 表示正在转移</span><br><span class="line">static final int TREEBIN   &#x3D; -2; &#x2F;&#x2F; 表示已经转移为树了</span><br><span class="line">static final int RESERVED  &#x3D; -3; &#x2F;&#x2F; 保留</span><br><span class="line">static final int HASH_BITS &#x3D; 0x7fffffff; &#x2F;&#x2F; usable bits of normal node hash</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; CPU的数量</span><br><span class="line">static final int NCPU &#x3D; Runtime.getRuntime().availableProcessors();</span><br><span class="line">&#x2F;&#x2F; 保存节点的数组</span><br><span class="line">transient volatile Node&lt;K,V&gt;[] table;</span><br><span class="line">&#x2F;&#x2F; 转移的时候用来保存数据的数组</span><br><span class="line">private transient volatile Node&lt;K,V&gt;[] nextTable;</span><br><span class="line">&#x2F;&#x2F; 用于计算元素数量</span><br><span class="line">transient volatile long baseCount;</span><br><span class="line">&#x2F;&#x2F; 用来控制表的初始化和扩容，当在初始化的时候指定了大小，这会将这个大小保存在sizeCtl中，</span><br><span class="line">&#x2F;&#x2F; 大小为数组的0.75，</span><br><span class="line">&#x2F;&#x2F; 当为负的时候，说明表正在初始化或扩张，</span><br><span class="line">&#x2F;&#x2F; -1表示初始化，-(1+n) n:表示活动的扩张线程</span><br><span class="line">private transient volatile int sizeCtl;</span><br><span class="line">&#x2F;&#x2F; 转移数组时的索引</span><br><span class="line">private transient volatile int transferIndex;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 区间忙位标志，标识当前cell数组是否在初始化或扩容中的CAS标志位</span><br><span class="line">private transient volatile int cellsBusy;</span><br><span class="line">&#x2F;&#x2F; 用于计数，初始容量为2，采用区间计数法，一个槽位表示map数组一个区间的增量</span><br><span class="line">private transient volatile CounterCell[] counterCells;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 用于返回集合</span><br><span class="line">private transient KeySetView&lt;K,V&gt; keySet;</span><br><span class="line">private transient ValuesView&lt;K,V&gt; values;</span><br><span class="line">private transient EntrySetView&lt;K,V&gt; entrySet;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="1-链表节点结构"><a href="#1-链表节点结构" class="headerlink" title="1.链表节点结构"></a>1.链表节点结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; Key的Hash值</span><br><span class="line">    final int hash;</span><br><span class="line">    final K key;</span><br><span class="line">    volatile V val;</span><br><span class="line">    volatile Node&lt;K,V&gt; next;</span><br><span class="line"></span><br><span class="line">    Node(int hash, K key, V val, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">        this.hash &#x3D; hash;</span><br><span class="line">        this.key &#x3D; key;</span><br><span class="line">        this.val &#x3D; val;</span><br><span class="line">        this.next &#x3D; next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 外部接口</span><br><span class="line">    public final K getKey()       &#123; return key; &#125;</span><br><span class="line">    public final V getValue()     &#123; return val; &#125;</span><br><span class="line">    public final int hashCode()   &#123; return key.hashCode() ^ val.hashCode(); &#125;</span><br><span class="line">    public final String toString()&#123; return key + &quot;&#x3D;&quot; + val; &#125;</span><br><span class="line">    public final V setValue(V value) &#123;</span><br><span class="line">        throw new UnsupportedOperationException();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean equals(Object o) &#123;</span><br><span class="line">        Object k, v, u; Map.Entry&lt;?,?&gt; e;</span><br><span class="line">        return ((o instanceof Map.Entry) &amp;&amp;</span><br><span class="line">                (k &#x3D; (e &#x3D; (Map.Entry&lt;?,?&gt;)o).getKey()) !&#x3D; null &amp;&amp;</span><br><span class="line">                (v &#x3D; e.getValue()) !&#x3D; null &amp;&amp;</span><br><span class="line">                (k &#x3D;&#x3D; key || k.equals(key)) &amp;&amp;</span><br><span class="line">                (v &#x3D;&#x3D; (u &#x3D; val) || v.equals(u)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">        * Virtualized support for map.get(); overridden in subclasses.</span><br><span class="line">        *&#x2F;</span><br><span class="line">    Node&lt;K,V&gt; find(int h, Object k) &#123;</span><br><span class="line">        Node&lt;K,V&gt; e &#x3D; this;</span><br><span class="line">        if (k !&#x3D; null) &#123;</span><br><span class="line">            do &#123;</span><br><span class="line">                K ek;</span><br><span class="line">                if (e.hash &#x3D;&#x3D; h &amp;&amp;</span><br><span class="line">                    ((ek &#x3D; e.key) &#x3D;&#x3D; k || (ek !&#x3D; null &amp;&amp; k.equals(ek))))</span><br><span class="line">                    return e;</span><br><span class="line">            &#125; while ((e &#x3D; e.next) !&#x3D; null);</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java%E9%9B%86%E5%90%88/" rel="tag"># Java集合</a>
+              <a href="/tags/ConcurrentHashMap/" rel="tag"># ConcurrentHashMap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/23/HashMap/" rel="prev" title="Java集合 —— HashMap">
+      <i class="fa fa-chevron-left"></i> Java集合 —— HashMap
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#父类"><span class="nav-number">2.1.</span> <span class="nav-text">父类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字段"><span class="nav-number">2.3.</span> <span class="nav-text">字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类"><span class="nav-number">2.4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链表节点结构"><span class="nav-number">2.4.1.</span> <span class="nav-text">1.链表节点结构</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="兴趣使然"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">兴趣使然</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="powered-by">
+   <i class="fa fa-user"></i><span id="busuanzi_container_site_uv">
+   本站访客数:&nbsp;&nbsp;<span id="busuanzi_value_site_uv"></span>
+   <i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+   本站总访问量:&nbsp;&nbsp;<span id="busuanzi_value_site_pv"></span>
+   </span>
+</div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">兴趣使然</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+  <!-- 音乐播放 -->
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer" class="aplayer" data-id="4992789973" data-server="netease"
+  data-type="playlist" data-fixed="true" data-listfolded="true" data-order="list" data-theme="#F58EA8"></div>
+  <script src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+  <div class="container use-motion">
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>
